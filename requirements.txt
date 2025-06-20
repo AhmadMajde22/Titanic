@@ -1,0 +1,8 @@
+minio==7.2.15
+numpy==2.3.0
+pandas==2.3.0
+psycopg2==2.9.10
+scikit-learn==1.6.1
+imblearn
+redis==6.2.0
+isort==6.0.1

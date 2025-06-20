@@ -1,0 +1,8 @@
+postgres:
+    port: "5435"
+project:
+    name: astro-project
+webserver:
+    port: "8088"
+api-server:
+    port: "8888"

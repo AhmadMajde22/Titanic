@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: Titanic-Survaival
+Version: 0.4
+Author: Ahmad Majdi
+Requires-Dist: minio==7.2.15
+Requires-Dist: numpy==2.3.0
+Requires-Dist: pandas==2.3.0
+Requires-Dist: psycopg2==2.9.10
+Requires-Dist: scikit-learn==1.6.1
+Requires-Dist: imblearn
+Requires-Dist: redis==6.2.0
+Dynamic: author
+Dynamic: requires-dist
