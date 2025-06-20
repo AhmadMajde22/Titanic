@@ -1,0 +1,106 @@
+body {
+    background: linear-gradient(120deg,
+            rgba(41, 128, 185, 0.8),
+            rgba(109, 213, 250, 0.8),
+            rgba(255, 255, 255, 0.8)),
+        url("/static/background.png") no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    max-width: 500px;
+    margin: 40px auto;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    padding: 32px 36px 24px 36px;
+    text-align: center;
+}
+
+h1 {
+    color: #2980b9;
+    margin-bottom: 28px;
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+}
+
+.prediction-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.form-group label {
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: #34495e;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #b2bec3;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #f7faff;
+    transition: border 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border: 1.5px solid #2980b9;
+    outline: none;
+}
+
+.submit-btn {
+    margin-top: 18px;
+    padding: 12px 0;
+    background: linear-gradient(90deg, #2980b9, #6dd5fa);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(41, 128, 185, 0.15);
+    transition: background 0.2s, transform 0.1s;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(90deg, #6dd5fa, #2980b9);
+    transform: translateY(-2px) scale(1.03);
+}
+
+.result {
+    margin-top: 20px;
+    padding: 14px;
+    border-radius: 10px;
+    background-color: #ecf0f1;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.result h2 {
+    color: #2c3e50;
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 18px 8px 16px 8px;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+}

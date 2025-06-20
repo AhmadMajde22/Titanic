@@ -2,10 +2,11 @@ import os
 import sys
 
 import pandas as pd
-from sklearn.model_selection import train_test_split,RandomizedSearchCV
+from sklearn.model_selection import train_test_split,GridSearchCV
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 import pickle
+from imblearn.over_sampling import SMOTE
 
 from config.path_config import *
 from src.custom_exception import CustomException
@@ -82,10 +83,16 @@ class ModelTraining:
                 "min_samples_split" : [2,5],
                 "min_samples_leaf":[1,2]
             }
+
+            smote= SMOTE(random_state=42)
+
+            X_resampled , y_resampled = smote.fit_resample(X_train,y_train)
+
+            
             rf = RandomForestClassifier(random_state=42)
-            random_search = RandomizedSearchCV(
-            rf,param_distributions,n_iter=10,cv=3,scoring='accuracy',random_state=42)
-            random_search.fit(X_train,y_train)
+            random_search = GridSearchCV(
+            rf,param_distributions,cv=5,scoring='accuracy')
+            random_search.fit(X_resampled,y_resampled)
 
             logger.info(f"Best Parameters {random_search.best_params_}")
 
