@@ -72,3 +72,18 @@ This project implements an end-to-end MLOps pipeline for predicting Titanic pass
 
 - All configuration files are in the `config/` directory.
 - Update `config/database_config.py` and `config/path_config.py` as needed.
+
+## Web Application
+
+- **Flask Web App:** A user-friendly web interface is provided for Titanic survival prediction.
+- **Location:** The main app is in `application.py`.
+- **How it works:**
+  - Users input passenger features (age, fare, class, sex, etc.) via a form.
+  - The app loads a trained Random Forest model (`artifacts/models/random_forest_model.pkl`).
+  - On form submission, the app predicts survival and displays the result.
+- **Frontend:** The interface uses `templates/index.html` and custom styles in `static/style.css`.
+- **How to run:**
+  1. Install requirements: `pip install -r requirements.txt`
+  2. Run the app: `python application.py`
+  3. Open your browser at `http://localhost:5000`
+- **Customization:** You can update the look and feel via `static/style.css` and the form fields in `templates/index.html`.
