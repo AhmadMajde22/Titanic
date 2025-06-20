@@ -1,0 +1,109 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+notebook/*.ipynb
+
+# PyCharm
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# Logs
+logs/
+*.log
+
+# Data and models
+artifacts/
+artifacts/models/
+artifacts/raw/
+
+# Airflow
+astro_project/airflow_settings.yaml
+astro_project/dags/__pycache__/
+
+# Secret files
+.env
+.env.*
+secrets.*
+config/database_config.py
+
+# Docker
+*.pid
+*.pid.lock
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Others
+*.bak
+*.swp
+*.tmp
+
+# Ignore egg-info
+Titanic_Survaival.egg-info/
+
+# Ignore test outputs
+tests/**/__pycache__/
+
+# Ignore config cache
+config/__pycache__/
+
+# Ignore pipeline cache
+pipeline/__pycache__/
+
+# Ignore src cache
+src/__pycache__/
+
+# Ignore notebook outputs
+notebook/.ipynb_checkpoints/
