@@ -28,53 +28,43 @@ This project implements an end-to-end MLOps pipeline for predicting Titanic pass
 
 ## Features
 
-- **Data Ingestion:** Automated download and management of Titanic datasets.
-- **Data Processing:** Cleaning, feature engineering, and storage.
+- **Data Ingestion:** Automated download and management of Titanic datasets from MinIO using Airflow.
+- **Data Processing:** Cleaning, feature engineering, and storage in PostgreSQL.
 - **Model Training:** Random Forest classifier with hyperparameter tuning.
 - **Orchestration:** Airflow DAGs for pipeline automation.
 - **Containerization:** Docker support for reproducible environments.
 - **Testing:** Unit and integration tests for pipeline components.
 - **Logging:** Centralized logging for monitoring and debugging.
 
-## Getting Started
+## Data Ingestion and Storage
 
-### Prerequisites
+### How Data Ingestion Works
 
-- Python 3.8+
-- Docker
-- Apache Airflow (or use provided Docker setup)
-- (Optional) Jupyter Notebook
+- Data ingestion is managed by an Airflow DAG located in `astro_project/dags/download_titanic_from_minio.py`.
+- The DAG connects to a MinIO bucket, downloads the Titanic dataset (CSV files), and stores them in the `artifacts/raw/` directory.
+- After downloading, the data is ingested into a PostgreSQL database for further processing and analysis.
 
-### Installation
+### Steps to Ingest Data from MinIO and Store in PostgreSQL
 
-1. Clone the repository:
+1. **Start Airflow:**
+   - Use the provided Dockerfile and Airflow setup in `astro_project/` to start Airflow.
+   - Make sure your MinIO and PostgreSQL services are running and accessible.
 
-   ```sh
-   git clone <repo-url>
-   cd Section_3_Titanic_Survaivl_prediction/Content
-   ```
+2. **Configure Connections:**
+   - In the Airflow UI, set up connections for MinIO (S3-compatible) and PostgreSQL with the correct credentials.
 
-2. Install dependencies:
+3. **Trigger the DAG:**
+   - In the Airflow UI, trigger the `download_titanic_from_minio` DAG.
+   - The DAG will:
+     - Connect to MinIO and download the Titanic dataset.
+     - Store the raw data in `artifacts/raw/`.
+     - Load the data into the configured PostgreSQL database.
 
-   ```sh
-   pip install -r requirements.txt
-   ```
+4. **Verify Data:**
+   - Check the `artifacts/raw/` directory for downloaded files.
+   - Verify that the data has been loaded into the PostgreSQL database (e.g., using a database client).
 
-3. (Optional) Set up Airflow:
-   - Use the provided Dockerfile and `astro_project/` for Airflow setup.
-
-### Running the Pipeline
-
-- **Via Airflow:**
-  1. Start Airflow (see `astro_project/README.md` for details).
-  2. Trigger the DAG `download_titanic_from_minio` or other available DAGs.
-- **Manual Execution:**
-
-  ```sh
-  python -m pipeline.training_pipeline
-  ```
-
-### Notebooks
+## Notebooks
 
 - Explore `notebook/notebook.ipynb` for EDA, feature exploration, and model prototyping.
 
@@ -82,41 +72,3 @@ This project implements an end-to-end MLOps pipeline for predicting Titanic pass
 
 - All configuration files are in the `config/` directory.
 - Update `config/database_config.py` and `config/path_config.py` as needed.
-
-## Testing
-
-- Run tests using:
-
-  ```sh
-  pytest tests/
-  ```
-
-## Logging
-
-- Logs are stored in the `logs/` directory.
-
-## Security & Secrets
-
-- Sensitive files (e.g., `.env`, `config/database_config.py`) are excluded via `.gitignore`.
-- Do not commit secrets or credentials to the repository.
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Open a pull request
-
-## License
-
-This project is for educational purposes. See LICENSE file if available.
-
-## Authors
-
-- [Your Name]
-
-## Acknowledgements
-
-- Kaggle Titanic Dataset
-- Udemy MLOps Course
-- Open-source contributors
