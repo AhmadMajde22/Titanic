@@ -73,6 +73,18 @@ This project implements an end-to-end MLOps pipeline for predicting Titanic pass
 - All configuration files are in the `config/` directory.
 - Update `config/database_config.py` and `config/path_config.py` as needed.
 
+## Data Drift
+
+- **Detection:** The application uses the Kolmogorov-Smirnov (KS) test via the `alibi-detect` library to monitor and detect data drift between the training data and new incoming data.
+- **Implementation:**
+  - Reference (historical) feature data is loaded from a Redis feature store and scaled using `StandardScaler`.
+  - For each prediction request, the input features are scaled and compared to the reference data using the KSDrift detector.
+  - If drift is detected, a warning is logged.
+- **Customization:**
+  - You can adjust drift detection thresholds (e.g., `p_val`) and monitored features in `application.py`.
+  - The reference data and scaling logic can be modified in the `fit_scaler_on_ref_data` function.
+- **Dependencies:** Requires `alibi-detect`, `scikit-learn`, and a running Redis instance for the feature store.
+
 ## Web Application
 
 - **Flask Web App:** A user-friendly web interface is provided for Titanic survival prediction.
