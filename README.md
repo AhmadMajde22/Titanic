@@ -6,7 +6,7 @@ This project implements an end-to-end MLOps pipeline for predicting Titanic pass
 
 ## Project Structure
 
-```
+```text
 ├── artifacts/                # Data and model artifacts
 │   ├── models/               # Trained models
 │   └── raw/                  # Raw datasets
