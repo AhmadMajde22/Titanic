@@ -8,21 +8,48 @@ This project implements an end-to-end MLOps pipeline for predicting Titanic pass
 
 ```text
 ├── artifacts/                # Data and model artifacts
-│   ├── models/               # Trained models
-│   └── raw/                  # Raw datasets
-├── astro_project/            # Airflow project (DAGs, configs, Dockerfile)
-│   ├── dags/                 # Airflow DAGs
-│   ├── airflow_settings.yaml # Airflow settings
-│   ├── Dockerfile            # Airflow Dockerfile
-│   └── requirements.txt      # Airflow requirements
-├── config/                   # Configuration files
-├── logs/                     # Log files
+│   ├── models/               # Trained models (e.g., random_forest_model.pkl)
+│   └── raw/                  # Raw datasets (titanic_train.csv, titanic_test.csv)
+├── astro_project/            # Airflow project for orchestration
+│   ├── dags/                 # Airflow DAGs (e.g., download_titanic_from_minio.py)
+│   ├── airflow_settings.yaml # Airflow settings for local development
+│   ├── Dockerfile            # Dockerfile for Airflow environment
+│   ├── packages.txt          # OS-level packages for Airflow
+│   ├── plugins/              # Custom Airflow plugins
+│   ├── include/              # Additional files for Airflow
+│   ├── requirements.txt      # Python dependencies for Airflow
+│   └── tests/                # Airflow DAG tests
+├── config/                   # Project configuration files
+│   ├── __init__.py
+│   ├── database_config.py    # Database connection settings
+│   └── path_config.py        # Path and directory settings
+├── docker-compose.yml        # Docker Compose file for Prometheus & Grafana monitoring stack
+├── logs/                     # Log files for pipeline and app
 ├── notebook/                 # Jupyter notebooks for EDA and prototyping
+│   └── notebook.ipynb
 ├── pipeline/                 # Pipeline scripts
+│   ├── __init__.py
+│   └── training_pipeline.py  # Main training pipeline script
+├── prometheus.yml            # Prometheus configuration for scraping metrics
 ├── src/                      # Source code (data, features, model, utils)
+│   ├── __init__.py
+│   ├── custom_exception.py   # Custom exception handling
+│   ├── data_ingestion.py     # Data ingestion logic
+│   ├── data_processing.py    # Data processing and drift detection
+│   ├── feature_store.py      # Feature store integration (e.g., Redis)
+│   ├── logger.py             # Logging utility
+│   └── model_training.py     # Model training logic
+├── static/                   # Static files for web app (CSS, images)
+│   ├── background.png
+│   └── style.css
+├── templates/                # HTML templates for web app
+│   └── index.html
 ├── tests/                    # Unit and integration tests
-├── requirements.txt          # Project dependencies
-├── setup.py                  # Package setup
+│   └── dags/                 # Airflow DAG tests
+│       ├── download_titanic_from_minio.py
+│       └── test_dag_example.py
+├── requirements.txt          # Project dependencies for main app
+├── setup.py                  # Python package setup
 └── README.md                 # Project documentation
 ```
 
