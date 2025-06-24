@@ -99,3 +99,21 @@ This project implements an end-to-end MLOps pipeline for predicting Titanic pass
   2. Run the app: `python application.py`
   3. Open your browser at `http://localhost:5000`
 - **Customization:** You can update the look and feel via `static/style.css` and the form fields in `templates/index.html`.
+
+## Monitoring with Prometheus and Grafana
+
+- **Monitoring Stack:** The project includes Prometheus and Grafana for monitoring and visualization.
+- **Setup:** Services are orchestrated using Docker Compose (`docker-compose.yml`).
+- **Configuration:**
+  - Prometheus is configured via `prometheus.yml` to scrape metrics from the Flask app.
+  - Grafana is available for dashboarding and visualization.
+- **How to run:**
+  1. Make sure Docker is installed and running.
+  2. Start the monitoring stack with:
+
+     ```
+     docker-compose up -d
+     ```
+
+  3. Access Prometheus at [http://localhost:9999](http://localhost:9999) and Grafana at [http://localhost:3333](http://localhost:3333) (default admin password: `admin`).
+- **Customization:** Update `prometheus.yml` and Grafana dashboards as needed for your metrics and visualization requirements.
